@@ -1,0 +1,4 @@
+127.0.0.1 - - [12/Mar/2012:22:39:49 +0000] "GET /mycms HTTP/1.1" 302 125 http-bio-8080-exec-1 0
+127.0.0.1 - - [12/Mar/2012:22:39:50 +0000] "GET /mycms/ HTTP/1.1" 500 15526 http-bio-8080-exec-3 342
+127.0.0.1 - - [12/Mar/2012:22:39:50 +0000] "GET /mycms HTTP/1.1" 302 125 http-bio-8080-exec-2 0
+127.0.0.1 - - [12/Mar/2012:22:39:50 +0000] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-4 0

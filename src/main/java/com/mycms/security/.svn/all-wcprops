@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/cmswebrep/!svn/ver/26/MyCMS/src/main/java/com/mycms/security
+END
+AuthenticationService.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/cmswebrep/!svn/ver/26/MyCMS/src/main/java/com/mycms/security/AuthenticationService.java
+END
+CustomOpenIdUserDetailsServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/cmswebrep/!svn/ver/29/MyCMS/src/main/java/com/mycms/security/CustomOpenIdUserDetailsServiceImpl.java
+END
+AuthenticationServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/cmswebrep/!svn/ver/26/MyCMS/src/main/java/com/mycms/security/AuthenticationServiceImpl.java
+END
+UserDetailsServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/cmswebrep/!svn/ver/29/MyCMS/src/main/java/com/mycms/security/UserDetailsServiceImpl.java
+END
+UserAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/cmswebrep/!svn/ver/26/MyCMS/src/main/java/com/mycms/security/UserAssembler.java
+END
+UserAssemblerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/cmswebrep/!svn/ver/29/MyCMS/src/main/java/com/mycms/security/UserAssemblerImpl.java
+END

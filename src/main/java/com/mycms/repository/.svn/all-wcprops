@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/cmswebrep/!svn/ver/26/MyCMS/src/main/java/com/mycms/repository
+END
+RoleRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/java/com/mycms/repository/RoleRepository.java
+END
+SitePageRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/java/com/mycms/repository/SitePageRepository.java
+END
+SiteUserRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/java/com/mycms/repository/SiteUserRepository.java
+END
+MenuRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/java/com/mycms/repository/MenuRepository.java
+END
+SiteSettingsRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/java/com/mycms/repository/SiteSettingsRepository.java
+END
+PageContentRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/java/com/mycms/repository/PageContentRepository.java
+END
+ContentRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/java/com/mycms/repository/ContentRepository.java
+END
+ContactRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/java/com/mycms/repository/ContactRepository.java
+END

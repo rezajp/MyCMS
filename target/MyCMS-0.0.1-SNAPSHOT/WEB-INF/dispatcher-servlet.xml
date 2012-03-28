@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
+	default-lazy-init="true">
+<context:load-time-weaver />
+	<context:component-scan base-package="com.mycms" />
+<!-- 	<context:annotation-config /> -->
+<!-- 	<context:spring-configured /> -->
+<!-- <aop:aspectj-autoproxy /> -->
+
+	<import resource="security.xml"></import>
+	<import resource="dataaccess.xml"></import>
+<!-- 	<import resource="aop.xml"></import> -->
+	<!-- <mvc:annotation-driven /> -->
+	<mvc:resources location="/css/" mapping="/css/**" />
+	<mvc:resources location="/Content/" mapping="/Content/**" />
+	<mvc:resources location="/scripts/" mapping="/scripts/**" />
+	<mvc:resources location="/ckeditor/" mapping="/ckeditor/**" />
+	<mvc:interceptors>
+		<bean id="commonDataHandlerInterceptor" class="com.mycms.web.CommonDataHandlerInterceptor" />
+	</mvc:interceptors>
+	
+	<!-- <bean id="handlerMapping" -->
+	<!-- class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> -->
+	<!-- <property name="interceptors"> -->
+	<!-- <list> -->
+	<!-- <ref bean="commonDataHandlerInterceptor" /> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<bean class="com.mycms.service.GmailDeliveryServiceImpl">
+		<property name="emailFrom" value="fromemail" />
+		<property name="username" value="username" />
+		<property name="password" value="password" />
+	</bean>
+	<mvc:view-controller path="/templates/decorators/base_layout.html"
+		view-name="decorators/base_layout" />
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jacksonMessageConverter" />
+			</list>
+
+		</property>
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<map>
+				<entry key="DataAccessException" value="data-error" />
+			</map>
+		</property>
+		<property name="defaultErrorView" value="general-error" />
+	</bean>
+	<bean id="templateResolver"
+		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+		<property name="prefix" value="/templates/" />
+		<property name="suffix" value=".html" />
+		<property name="templateMode" value="HTML5" />
+	</bean>
+	<bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+	<bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+	</bean>
+
+	<bean id="viewResolver" class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
+	</bean>
+
+<!-- 	<tx:advice id="txAdvice"> -->
+<!-- 		<tx:attributes> -->
+<!-- 			<tx:method name="*" propagation="NESTED" /> -->
+<!-- 		</tx:attributes> -->
+<!-- 	</tx:advice> -->
+
+<!-- 	<aop:config> -->
+		<!-- <aop:advisor pointcut="execution(* com.techdiscussions.security.*.*(..))" -->
+		<!-- advice-ref="txAdvice" /> -->
+<!-- 		<aop:advisor pointcut="execution(* com.mycms.web.*.*(..))" -->
+<!-- 			advice-ref="txAdvice" /> -->
+
+
+<!-- 	</aop:config> -->
+</beans>

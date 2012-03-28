@@ -1,0 +1,74 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Alien Design :<sitemesh:write property='title' /></title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/Site.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/menus.css}" />
+<script type="text/javascript" th:src="@{/scripts/jquery-1.5.1.js}"></script>
+<script type="text/javascript" th:src="@{/scripts/common.js}"></script>
+<script type="text/javascript" th:src="@{/ckeditor/ckeditor.js}"></script>
+<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" /> -->
+<!-- <link th:href="@{/scripts/prettify/prettify.css}" type="text/css" -->
+<!-- 	rel="stylesheet" /> -->
+<!-- <link th:href="@{/css/jqModal.css}" type="text/css" rel="stylesheet" /> -->
+<!-- <script type="text/javascript" th:src="@{/scripts/prettify/prettify.js}"></script>-->
+<!-- <script type="text/javascript" th:src="@{/scripts/modal/jqModal.js}"></script> -->
+<!-- <script type="text/javascript" -->
+<!-- 	th:src="@{/scripts/jquery/jquery-1.6.2.min.js}"></script> -->
+<!-- <script type="text/javascript" -->
+<!-- 	th:src="@{/scripts/corner/jquery.corner.js}"></script> -->
+<!-- <script type="text/javascript"> -->
+<!-- 	$(document).ready(function() { -->
+<!-- 		$(".corner").corner("10px"); -->
+<!-- 		$("input.corner").corner("5px"); -->
+
+<!-- 	}); -->
+<!-- </script> -->
+</head>
+
+<body onload="prettyPrint();">
+	<div class="page">
+		<div id="header">
+			<div id="logo-container">
+				<a th:href="@{/}">
+					<h3>
+						<span class="smart">Alien</span><span>design</span>
+					</h3> </a>
+			</div>
+			<div th:if="${contentPage!=null}" th:text="${contentPage.validKey}"></div>
+			<div id="menucontainer">
+				<ul id="menu">
+					<li th:unless="*{m == null}" th:if="*{m.published}"
+						th:each="m : ${sitemenus}" th:attr="pageKey=*{m.getKey()}"><a
+						th:text="*{m.title}" th:href="@{/__*{m.getKey()}__/}"
+						th:class="*{m.cssClass}"></a></li>
+
+				</ul>
+
+			</div>
+		</div>
+	</div>
+	<div id="main">
+		<sitemesh:write property='body' />
+
+
+	</div>
+	<div id="footer">
+		<div class="groups">
+			<ul>
+				<li th:unless="*{m == null}" th:if="*{m.published}"
+					th:each="m : ${sitemenus}" th:attr="pageKey=*{m.getKey()}"><a
+					th:text="*{m.title}" th:href="@{/__*{m.getKey()}__/}"
+					th:class="*{m.cssClass}"></a></li>
+			</ul>
+		</div>
+		<div class="copyright">
+			<p>Copyright ©2011 Alien Design. All rights reserved.</p>
+		</div>
+	</div>
+
+</body>
+</html>
+

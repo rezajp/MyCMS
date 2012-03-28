@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+	<beans:import resource="dataaccess.xml" />
+	<context:component-scan base-package="com.mycms" />
+	<http use-expressions="true" auto-config="true">
+		<intercept-url pattern="/login**" access="permitAll" />
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/css/**" access="permitAll" />
+		<intercept-url pattern="/scripts/**" access="permitAll" />
+		<intercept-url pattern="/question/**" access="permitAll" />
+		<intercept-url pattern="/admin/**" access="isAuthenticated()" />
+		<intercept-url pattern="/reply/**" access="isAuthenticated()" />
+		<intercept-url pattern="/post/markup/**" access="isAuthenticated()" />
+		<openid-login login-page="/login"
+			authentication-failure-url="/login?failed=true" default-target-url="/"
+			user-service-ref="customOpenIdUserDetailsService">
+			<attribute-exchange>
+				<openid-attribute name="email"
+					type="http://axschema.org/contact/email" required="true" />
+				<openid-attribute name="fullname"
+					type="http://axschema.org/namePerson" required="true" />
+					<openid-attribute name="firstname"
+					type="http://schema.openid.net/namePerson/first" required="true"  />
+					<openid-attribute name="lastname"
+					type="http://schema.openid.net/namePerson/last" required="true" />
+			</attribute-exchange>
+		</openid-login>
+
+		<logout logout-url="/logout" logout-success-url="/login" />
+	</http>
+	<beans:bean id="userDetailsService" class="com.mycms.security.UserDetailsServiceImpl" />
+	<beans:bean id="customOpenIdUserDetailsService"
+		class="com.mycms.security.CustomOpenIdUserDetailsServiceImpl" />
+	<beans:bean id="myAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<beans:property name="userDetailsService" ref="userDetailsService" />
+	</beans:bean>
+	<beans:bean id="authenticationManager"
+		class="org.springframework.security.authentication.ProviderManager">
+		<beans:property name="providers">
+			<beans:list>
+				<beans:ref local="myAuthenticationProvider" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	<authentication-manager>
+		<authentication-provider user-service-ref="userDetailsService">
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>

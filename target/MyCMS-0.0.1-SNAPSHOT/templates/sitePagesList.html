@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+<body class="page">
+
+	<div class="container">
+<div>
+<a th:href="@{/admin/sitepages/create}">New</a>
+</div>
+		<div class="site-pages">
+
+			<table>
+				<tr>
+					<th>Key</th>
+					<th>Title</th>
+					<th>Css Class</th>
+					<th>Contents</th>
+				</tr>
+				<tr th:each="page : ${sitePages}">
+					<td th:text="*{page.validKey}"></td>
+					<td th:text="*{page.title}"></td>
+					<td th:text="*{page.cssClass}"></td>
+					<td><div>
+							<a th:href="@{/admin/sitepages/__${page.id}__/content/add}">Add
+								Content</a>
+						</div>
+						<table>
+							<tr th:each="pc : ${page.contents}">
+								<td th:text="*{pc.content.validKey}">Key</td>
+								<td th:text="*{pc.cssClass}">Css Class</td>
+								<td><a
+									th:href="@{/admin/sitepages/__${page.id}__/content/__*{pc.id}__/remove}">Remove</a>
+								</td>
+								<td><a
+									th:href="@{/admin/sitepages/__${page.id}__/content/__*{pc.id}__/up}">Move
+										Up</a>
+								</td>
+								<td><a
+									th:href="@{/admin/sitepages/__${page.id}__/content/__*{pc.id}__/down}">Move
+										Down</a>
+								</td>
+
+							</tr>
+						</table>
+					</td>
+					<td><a th:href="@{/admin/sitepages/edit/__${page.id}__}">Edit</a>
+					</td>
+					<td><a th:href="@{/admin/sitepages/delete/__${page.id}__}">Delete</a>
+					</td>
+
+				</tr>
+
+
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

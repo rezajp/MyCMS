@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/cmswebrep/!svn/ver/27/MyCMS/src/main/webapp/WEB-INF
+END
+sitemesh3.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/cmswebrep/!svn/ver/26/MyCMS/src/main/webapp/WEB-INF/sitemesh3.xml
+END
+server.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/webapp/WEB-INF/server.xml
+END
+security.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/webapp/WEB-INF/security.xml
+END
+dispatcher-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/webapp/WEB-INF/dispatcher-servlet.xml
+END
+dataaccess.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/webapp/WEB-INF/dataaccess.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/cmswebrep/!svn/ver/26/MyCMS/src/main/webapp/WEB-INF/log4j.properties
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/webapp/WEB-INF/web.xml
+END
+log4j.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/cmswebrep/!svn/ver/30/MyCMS/src/main/webapp/WEB-INF/log4j.xml
+END
