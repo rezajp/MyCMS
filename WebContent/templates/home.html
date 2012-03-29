@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title th:text="${page.title}"></title>
+</head>
+<body class="page">
+
+	<div class="container">
+<!-- <h1 class="title" th:text="${page.title}"></h1> -->
+<!-- <h3 th:utext="${filePath}"></h3> -->
+		<div class="contents">
+
+			<div th:utext="*{content.getContent().getHtmlValue()}"
+			  th:class="*{content.cssClass}"
+			  th:each="content : ${page.getContents()}"
+			  >
+
+			</div>
+		</div>
+	</div>
+<script th:inline="javascript">
+$(document).ready(function(){
+	/*[+
+	var pageKey  =  [[${page.ValidKey}]];
+	+]*/
+	setSelectedMenu(pageKey);
+});
+
+</script>
+</body>
+</html>
