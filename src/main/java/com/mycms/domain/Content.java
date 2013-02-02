@@ -3,6 +3,7 @@ package com.mycms.domain;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -11,6 +12,9 @@ public class Content {
 	@Id
 	private String id= UUID.randomUUID().toString();
 
+	@DBRef
+	private SiteInstance site;
+	
 	private String validKey;
 
 	private String htmlValue;
@@ -39,6 +43,14 @@ public class Content {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public SiteInstance getSite() {
+		return site;
+	}
+
+	public void setSite(SiteInstance site) {
+		this.site = site;
 	}
 
 }

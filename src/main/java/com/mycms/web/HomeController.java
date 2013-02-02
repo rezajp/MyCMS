@@ -24,32 +24,7 @@ public class HomeController extends AbstractCmsController {
 	@RequestMapping("/")
 	public ModelAndView index() {
 
-//		SitePage page = sitePageRepository.readByValidKey("home");
-//		if (page == null)
-//			throw new ResourceNotFoundException();
-//		ModelMap map = new ModelMap();
-//		map.addAttribute("pageKey", page.getValidKey());
-//		map.addAttribute("page", page);
-//		
-		// File path = new File("c:\\junk\\test");
-		// boolean createdDir = path.mkdirs();
-
-		// File file = new File(path.getPath() + "\\"
-		// + Calendar.getInstance().getTimeInMillis() + ".log");
-
-		// Writer output = null;
-		// try {
-		// output = new BufferedWriter(new FileWriter(file));
-		// output.write("damn u ");
-		// output.close();
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		//
-		// map.addAttribute("filePath", createdDir + " " + file.getPath());
-//		return new ModelAndView("home", map);
-		return loadPage("home");
+		return new ModelAndView("homePage");
 
 	}
 

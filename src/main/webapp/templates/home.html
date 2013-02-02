@@ -12,9 +12,9 @@
 <!-- <h3 th:utext="${filePath}"></h3> -->
 		<div class="contents">
 
-			<div th:id="*{content.getCombinedId()}" th:utext="*{content.getContent().getHtmlValue()}"
+			<div th:id="*{content.getCombinedId(page.id)}" th:utext="*{content.getContent().getHtmlValue()}"
 			  class="content"
-			  th:each="content : ${page.getContents()}"
+			  th:each="content : ${page.getPageContents()}"
 			  >
 
 			</div>

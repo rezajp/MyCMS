@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -14,6 +15,9 @@ public class SiteUser {
 	@Id
 	private String id= UUID.randomUUID().toString();
 
+	@DBRef
+	private SiteInstance site;
+	
 	private String username;
 
 	private String email;
@@ -70,6 +74,14 @@ public class SiteUser {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public SiteInstance getSite() {
+		return site;
+	}
+
+	public void setSite(SiteInstance site) {
+		this.site = site;
 	}
 
 

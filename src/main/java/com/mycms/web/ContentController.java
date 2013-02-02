@@ -24,14 +24,14 @@ public class ContentController extends AbstractCmsController {
 
 	}
 	@RequestMapping(value="/admin/contents/edit/{id}",method=RequestMethod.GET)
-	public ModelAndView edit(@PathVariable int id)
+	public ModelAndView edit(@PathVariable String id)
 	{
 
 		return new ModelAndView("contentEdit", "content", contentRepository.findOne(id));
 
 	}
 	@RequestMapping(value="/admin/contents/edit/{id}",method=RequestMethod.POST)
-	public String edit(@PathVariable int id,Content content)
+	public String edit(@PathVariable String id,Content content)
 	{
 		content.setId(id);
 		contentRepository.save(content);

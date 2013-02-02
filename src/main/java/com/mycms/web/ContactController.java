@@ -6,21 +6,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycms.domain.Contact;
-import com.mycms.domain.SiteSettings;
 import com.mycms.repository.ContactRepository;
-import com.mycms.repository.SiteSettingsRepository;
 import com.mycms.service.MailDeliveryService;
 
 @Controller
@@ -29,8 +24,6 @@ public class ContactController {
 	@Autowired
 	private ContactRepository contactRepository;
 
-	@Autowired
-	private SiteSettingsRepository siteSettingsRepository;
 
 	//@Autowired
 	private MailDeliveryService mailDeliveryService;
@@ -70,12 +63,12 @@ public class ContactController {
 	}
 
 	private void notifyOwners(Contact contact) {
-		SiteSettings siteSettings = siteSettingsRepository.findByActive(true)
-				.get(0);
-		mailDeliveryService.sendMail(
-				siteSettings.getNotifyEmail(),
-				"New message from " + contact.getName() + " - "
-						+ contact.getEmail(), contact.getMessage());
+//		SiteSettings siteSettings = siteSettingsRepository.findByActive(true)
+//				.get(0);
+//		mailDeliveryService.sendMail(
+//				siteSettings.getNotifyEmail(),
+//				"New message from " + contact.getName() + " - "
+//						+ contact.getEmail(), contact.getMessage());
 
 	}
 

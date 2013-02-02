@@ -13,7 +13,7 @@ public class SitePageEditor extends PropertyEditorSupport {
 	}
 	@Override
     public void setAsText(String text) throws IllegalArgumentException {
-        setValue(sitePageRepository.findOne(Integer.parseInt(text)));
+        setValue(sitePageRepository.findOne(text));
     }
 
     @Override
@@ -22,7 +22,7 @@ public class SitePageEditor extends PropertyEditorSupport {
         if (s == null) {
             return null;
         } else {
-            return ((Integer)s.getId()).toString();
+            return s.getId();
         }
     }
 }

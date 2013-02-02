@@ -1,5 +1,7 @@
 package com.mycms.domain;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
@@ -13,19 +15,18 @@ public class PageContent {
 	@Id
 	private String id= UUID.randomUUID().toString();
 
-//	@DBRef
-//	private SitePage sitePage;
-//
-//	public SitePage getSitePage() {
-//		return sitePage;
-//	}
-//
-//	public void setSitePage(SitePage sitePage) {
-//		this.sitePage = sitePage;
-//	}
+
 	@DBRef
 	private Content content;
 
+	private Set<Style> styles = new HashSet<Style>();
+	public Set<Style> getStyles() {
+		return styles;
+	}
+
+	public void setStyles(Set<Style> styles) {
+		this.styles = styles;
+	}
 	private int sortOrder;
 
 	private String cssClass;
@@ -64,8 +65,8 @@ public class PageContent {
 	public void setSortOrder(int sortOrder) {
 		this.sortOrder = sortOrder;
 	}
-	public String getCombinedId(){
-		return String.format("ct%s_%s", this.content.getId());//,this.sitePage.getId());
+	public String getCombinedId(String pageId){
+		return String.format("ct%s_%s", this.content.getId(),pageId);
 	}
 
 }

@@ -4,6 +4,8 @@
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+	
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
         http://www.springframework.org/schema/context
@@ -39,7 +41,7 @@
 					type="http://schema.openid.net/namePerson/last" required="true" />
 			</attribute-exchange>
 		</openid-login>
-
+<!-- 		<custom-filter before="FILTER_SECURITY_INTERCEPTOR " ref="oauth2AuthFilter"/> -->
 		<logout logout-url="/logout" logout-success-url="/login" />
 	</http>
 	<beans:bean id="userDetailsService" class="com.mycms.security.UserDetailsServiceImpl" />
@@ -58,7 +60,21 @@
 		</beans:property>
 	</beans:bean>
 	<authentication-manager>
-		<authentication-provider user-service-ref="userDetailsService">
-		</authentication-provider>
+		<authentication-provider user-service-ref="userDetailsService"/>
+<!-- 		<authentication-provider ref="facebookAuthenticationProvider"/> -->
 	</authentication-manager>
+	
+        
+<!--         <bean id="oauth2ResourceDetailsService" class="org.springframework.security.oauth2.config.ResourceDetailsServiceFactoryBean"/> -->
+       
+        <!-- You can exchange that with your custom token service -->
+<!--         <bean id="oauth2TokenServices" class="org.springframework.security.oauth2.consumer.token.InMemoryOAuth2ClientTokenServices" /> -->
+        <!--define an oauth 2 resource for facebook. according to the facebook docs, the 'clientId' 
+                is the App ID, and the 'clientSecret' is the App Secret -->
+<!--         <oauth:resource id="facebook" type="authorization_code" -->
+<!--                 clientId="202086623166314" clientSecret="0838b1813f49ad5625e7c518c0741439" -->
+<!--                 bearerTokenMethod="query" accessTokenUri="https://graph.facebook.com/oauth/access_token" -->
+<!--                 scope="email" userAuthorizationUri="https://www.facebook.com/dialog/oauth" /> -->
+	
+	
 </beans:beans>

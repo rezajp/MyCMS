@@ -17,6 +17,7 @@ import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.mongodb.repository.support.MongoRepositoryFactoryBean;
 
 
@@ -27,19 +28,20 @@ import com.mycms.domain.Content;
 import com.mycms.domain.Menu;
 import com.mycms.domain.PageContent;
 import com.mycms.domain.Role;
+import com.mycms.domain.SiteInstance;
 import com.mycms.domain.SitePage;
-import com.mycms.domain.SiteSettings;
 import com.mycms.domain.SiteUser;
 import com.mycms.repository.ContactRepository;
 import com.mycms.repository.ContentRepository;
 import com.mycms.repository.MenuRepository;
 import com.mycms.repository.PageContentRepository;
 import com.mycms.repository.RoleRepository;
+import com.mycms.repository.SiteInstanceRepository;
 import com.mycms.repository.SitePageRepository;
-import com.mycms.repository.SiteSettingsRepository;
 import com.mycms.repository.SiteUserRepository;
 
 @Configuration
+@EnableMongoRepositories
 public class DataStoreConfig {
 
 	@Autowired
@@ -61,14 +63,14 @@ public class DataStoreConfig {
 		return db;
 	}
 
-	@Bean
-	@Scope("prototype")
-	
-	public SitePage sitePage(){
-		SitePage sitePage = new SitePage();
-		sitePage.setPageContentRepository(pageContentRepository());
-		return sitePage;
-	}
+//	@Bean
+//	@Scope("prototype")
+//	
+//	public SitePage sitePage(){
+//		SitePage sitePage = new SitePage();
+//		sitePage.setPageContentRepository(pageContentRepository());
+//		return sitePage;
+//	}
 	@Bean
 	public MongoTemplate mongoTemplate() {
 		MongoTemplate template = new MongoTemplate(mongo(),"mycmsdb");
@@ -102,8 +104,8 @@ public class DataStoreConfig {
 	}
 	
 	@Bean
-	public SiteSettingsRepository siteSettingsRepository() {
-		return getNewMongoRepository(SiteSettingsRepository.class, SiteSettings.class,
+	public SiteInstanceRepository siteInstanceRepository() {
+		return getNewMongoRepository(SiteInstanceRepository.class, SiteInstance.class,
 				String.class);
 
 	}

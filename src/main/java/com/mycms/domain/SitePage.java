@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.mycms.repository.PageContentRepository;
@@ -22,20 +23,12 @@ public class SitePage {
 
 
 	
-	//@Transient
-	//@Autowired
-	//private PageContentRepository pageContentRepository;
-	
-
-
-	
-//	public void setPageContentRepository(PageContentRepository pageContentRepository) {
-//		this.pageContentRepository = pageContentRepository;
-//	}
 
 	@Id
 	private String id= UUID.randomUUID().toString();
 
+	
+	
 	private String validKey;
 
 	private String title;
@@ -91,5 +84,7 @@ public class SitePage {
 	public void addContent(PageContent pageContent) {
 		pageContents.add(pageContent);
 	}
+
+	
 
 }
