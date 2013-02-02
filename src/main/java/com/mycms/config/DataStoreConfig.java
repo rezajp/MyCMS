@@ -63,14 +63,7 @@ public class DataStoreConfig {
 		return db;
 	}
 
-//	@Bean
-//	@Scope("prototype")
-//	
-//	public SitePage sitePage(){
-//		SitePage sitePage = new SitePage();
-//		sitePage.setPageContentRepository(pageContentRepository());
-//		return sitePage;
-//	}
+
 	@Bean
 	public MongoTemplate mongoTemplate() {
 		MongoTemplate template = new MongoTemplate(mongo(),"mycmsdb");
